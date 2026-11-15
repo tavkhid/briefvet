@@ -1,5 +1,5 @@
 import { OwnerPlan } from '@/components/owner/owner-plan';
-import { supabase } from '@/lib/supabase';
+import { fetchVisitByToken } from '@/lib/owner-api';
 import { isUuid, type PublicVisit } from '@/lib/vet';
 
 export const dynamic = 'force-dynamic';
@@ -25,19 +25,20 @@ export default async function OwnerPlanPage({ params }: { params: { token: strin
     return <StatusMessage title="Ссылка недействительна" text="Проверьте QR-код или попросите клинику прислать ссылку заново." />;
   }
 
-  const { data, error } = await supabase.rpc('get_visit_by_token', { p_token: params.token });
-
-  if (error) {
+  let visit: PublicVisit | null;
+  try {
+    visit = await fetchVisitByToken(params.token);
+  } catch {
     return <StatusMessage title="Не удалось загрузить план" text="Обновите страницу через несколько секунд." />;
   }
 
-  if (!data || typeof data !== 'object' || !Array.isArray((data as PublicVisit).prescriptions)) {
+  if (!visit) {
     return <StatusMessage title="Ссылка недействительна" text="Проверьте QR-код или попросите клинику прислать ссылку заново." />;
   }
 
   return (
     <main className="min-h-screen bg-slate-50">
-      <OwnerPlan token={params.token} visit={data as PublicVisit} />
+      <OwnerPlan token={params.token} visit={visit} />
     </main>
   );
 }

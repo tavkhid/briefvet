@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { supabase } from '@/lib/supabase';
+import { saveDoseStatus } from '@/lib/owner-api';
 import { formatTime, type ReminderStatus } from '@/lib/vet';
 
 type DoseAction = 'taken' | 'skipped';
@@ -42,20 +42,14 @@ export function DoseRow({
     setPendingAction(action);
     setError(null);
 
-    const { data, error: rpcError } = await supabase.rpc('set_reminder_status', {
-      p_token: token,
-      p_reminder_id: reminderId,
-      p_status: action,
-    });
-
-    setPendingAction(null);
-
-    if (rpcError || typeof data !== 'string') {
+    try {
+      const nextStatus = await saveDoseStatus(token, reminderId, action);
+      onStatusChange(reminderId, nextStatus);
+    } catch {
       setError('Не удалось сохранить. Попробуйте ещё раз.');
-      return;
+    } finally {
+      setPendingAction(null);
     }
-
-    onStatusChange(reminderId, data as ReminderStatus);
   }
 
   return (
