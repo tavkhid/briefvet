@@ -6,6 +6,8 @@ import { LocaleProvider } from '@/components/i18n/locale-provider';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'VetBrief',
   description: 'Планы лечения для владельцев питомцев',
