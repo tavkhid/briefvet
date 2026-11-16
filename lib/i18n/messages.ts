@@ -245,7 +245,7 @@ const ce: Messages = {
   resendEmail: 'Письмо дӀа яьккха',
   resendSent: 'Письмо дӀа яьккхина. Почта тӀе хьажа.',
   forgotTitle: 'Пароль хийца',
-  forgotSubtitle: 'Аккаунтан email яздан ахь. Тхо керла пароль дӀаяздан линк яьккха.',
+  forgotSubtitle: 'пароль хуьйцу т1ехьажориг емайл т1е схьакхочу.',
   sendResetLink: 'Линк яьккха',
   resetLinkSent: 'Ишта email-ехь аккаунт леш дуйтахь, тхо линк яьккхина.',
   backToSignIn: 'Вход тӀе дӀаваха',
