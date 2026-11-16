@@ -3,11 +3,13 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, type ReactNode } from 'react';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
+import { useLocale } from '@/components/i18n/locale-provider';
 import { supabase } from '@/lib/supabase';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const [authenticated, setAuthenticated] = useState(false);
+  const { messages } = useLocale();
 
   useEffect(() => {
     let active = true;
@@ -38,7 +40,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   if (!authenticated) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-slate-50">
-        <p className="text-sm text-slate-500">Загрузка...</p>
+        <p className="text-sm text-slate-500">{messages.loading}</p>
       </main>
     );
   }
