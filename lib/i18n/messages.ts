@@ -222,7 +222,7 @@ const ce: Messages = {
   emailLabel: 'Email',
   passwordLabel: 'Пароль',
   passwordPlaceholderSignIn: 'Хьан пароль',
-  passwordHint: 'маьл к1еззига 8 символ,цхьаъ мукъане а докх элп,терахь а',
+  passwordHint: 'к1еззига а 8 элп,цхьаъ мукъане а докх элп,терахь а',
   passwordTooShort: 'Пароль минимум 8 символ хила деза',
   passwordNoUppercase: 'Цхьа а  мукънеа Докха элп яздехь ',
   passwordNoDigit: 'Цхьа терхьост яздан ахь',
