@@ -215,7 +215,7 @@ const ce: Messages = {
   languageLabel: 'Мотт',
   loading: 'Загрузка...',
   signOut: 'Выход',
-  signInTitle: 'Ветеринаран вход',
+  signInTitle: 'Хьайбанан Лоьра чу волу меттиг',
   signInSubtitle: 'Яздина  дарбан 1алашонаш йолу системе чу валар.',
   signUpTitle: 'Клиника регистраци',
   signUpSubtitle: 'Аккаунт дӀаяздан, лечение планаш кхачан.',
